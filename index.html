@@ -62,12 +62,12 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .badge i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(48,209,88,.7);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(48,209,88,0)}100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}}
 h1{font-family:var(--h);font-weight:900;font-stretch:112%;font-size:clamp(40px,7vw,78px);line-height:.98;letter-spacing:-.02em;margin:22px 0 18px}
-h1 em{font-style:normal;background:linear-gradient(95deg,var(--amber),var(--orange) 45%,#ff5c00);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 em{font-style:normal;background:linear-gradient(95deg,var(--g1),var(--g2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .lead{font-size:clamp(16px,2vw,19px);color:var(--mute);max-width:520px}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:16px;font-weight:700;font-size:16px;border:0;cursor:pointer;transition:.2s;font-family:var(--b)}
 .btn.primary{background:linear-gradient(180deg,#2b9bff,var(--blue));color:#fff;box-shadow:0 10px 30px rgba(10,132,255,.45),inset 0 1px 0 rgba(255,255,255,.3)}
-.btn.amber{background:linear-gradient(180deg,#ffd75a,var(--amber));color:#1b1400;box-shadow:0 10px 30px rgba(255,198,43,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn.amber{background:linear-gradient(180deg,var(--g1),var(--g2));color:var(--onG);box-shadow:0 10px 30px rgba(255,198,43,.35),inset 0 1px 0 rgba(255,255,255,.5)}
 .btn.ghost{background:var(--glass);border:1px solid var(--line);color:var(--ink)}
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:scale(.98)}
@@ -77,35 +77,72 @@ h1 em{font-style:normal;background:linear-gradient(95deg,var(--amber),var(--oran
 .stats b{display:block;font-family:var(--h);font-size:26px;color:var(--ink);font-weight:800}
 
 /* phone mockup */
-.phone-wrap{display:flex;justify-content:center;perspective:1200px}
-.phone{width:min(290px,72vw);aspect-ratio:9/18.5;border-radius:46px;padding:11px;position:relative;
-  background:linear-gradient(145deg,#2a2f2d,#0c0f0e);box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 2px #3a403d,inset 0 0 0 2px #090b0a;
+.phone-wrap{display:flex;justify-content:center;perspective:1400px}
+.phone{width:300px;aspect-ratio:9/19;border-radius:52px;padding:10px;position:relative;
+  background:linear-gradient(145deg,#5a605d,#121514 38%,#2c302e 70%,#6a706d);
+  box-shadow:0 50px 90px rgba(0,0,0,.65),0 0 0 1.5px #101312,inset 0 0 0 2px #0a0c0b,inset 0 0 6px 2px rgba(255,255,255,.12);
   transform:rotateY(-14deg) rotateX(5deg) rotate(2deg);animation:float 7s ease-in-out infinite}
 @keyframes float{50%{transform:rotateY(-10deg) rotateX(3deg) rotate(1deg) translateY(-12px)}}
-.screen{width:100%;height:100%;border-radius:36px;overflow:hidden;position:relative;
-  background:
-   radial-gradient(circle at 20% 10%,rgba(10,132,255,.65) 0,transparent 45%),
-   radial-gradient(circle at 80% 90%,rgba(191,90,242,.5) 0,transparent 50%),
-   radial-gradient(circle at 50% 50%,rgba(48,209,88,.3) 0,transparent 60%),
-   linear-gradient(160deg,#0a0d12,#1a1220 55%,#05070b)}
-.island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:34%;height:24px;background:#000;border-radius:20px;z-index:3}
-.sbar{position:absolute;top:14px;left:22px;right:22px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;z-index:2}
-.time{margin-top:62px;text-align:center;font-family:var(--h);font-weight:300;font-size:58px;letter-spacing:-.03em;line-height:1}
-.date{text-align:center;font-size:12px;color:rgba(255,255,255,.75);margin-top:4px}
-.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px;padding:34px 16px 0}
-.app{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:9px;color:rgba(255,255,255,.9)}
-.app span{width:100%;aspect-ratio:1;border-radius:22%;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.35)}
-.app .i{font-size:22px;color:#fff}
+.sb{position:absolute;width:4px;border-radius:3px;background:linear-gradient(90deg,#2a2e2c,#5a605d)}
+.sb.l1{left:-3px;top:112px;height:30px}.sb.l2{left:-3px;top:158px;height:52px}.sb.r{right:-3px;top:150px;height:84px}
+.screen{width:100%;height:100%;border-radius:42px;overflow:hidden;position:relative;color:#fff;font-family:var(--b);background:var(--wall);transition:background .6s}
+.screen::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% -10%,rgba(255,255,255,.18),transparent 55%)}
+.glare{position:absolute;inset:0;border-radius:inherit;z-index:5;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.16) 0,rgba(255,255,255,0) 34%)}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:94px;height:27px;background:#000;border-radius:20px;z-index:4}
+.island i{position:absolute;right:11px;top:8px;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2d4a7a,#06080c 70%)}
+.sbar{position:absolute;top:15px;left:28px;right:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;z-index:3}
+.sig{display:flex;gap:5px;align-items:center}.sig svg{height:11px;width:auto;fill:#fff;stroke:none}
+.time{position:relative;margin-top:58px;text-align:center;font-family:var(--h);font-weight:300;font-stretch:100%;font-size:62px;letter-spacing:-.03em;line-height:1}
+.date{position:relative;text-align:center;font-size:12px;font-weight:500;color:rgba(255,255,255,.85);margin-top:2px}
+.glass{background:rgba(255,255,255,.15);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14)}
+.notif{position:relative;margin:14px 14px 0;padding:9px 11px;border-radius:18px;display:flex;gap:9px;align-items:center;font-size:11px;animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-3px)}}
+.notif img{width:28px;height:28px;border-radius:8px}.notif div{flex:1;min-width:0;line-height:1.25}
+.notif b{display:block;font-size:11px}.notif span{color:rgba(255,255,255,.88);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notif em{font-style:normal;font-size:10px;opacity:.65;align-self:flex-start}
+.widgets{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 14px 0}
+.wg{border-radius:22px;padding:11px 12px;height:86px;display:flex;flex-direction:column;justify-content:space-between}
+.wg small{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.wg b{font-family:var(--h);font-size:28px;font-weight:600;line-height:1}
+.wg span{font-size:10px;opacity:.85}
+.spark{display:block;width:100%;height:20px}
+.apps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:12px 6px;padding:16px 14px 0}
+.app{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9.5px;color:rgba(255,255,255,.92)}
+.app span{position:relative;width:100%;aspect-ratio:1;border-radius:23%;display:grid;place-items:center;box-shadow:0 5px 12px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.35)}
+.app .i{font-size:23px;color:#fff}
 .app.hero-app span{background:url(assets/logo-icon.svg) center/cover;animation:pop 2.4s ease-in-out infinite}
-@keyframes pop{50%{transform:scale(1.08)}}
-.dock{position:absolute;left:14px;right:14px;bottom:14px;height:64px;border-radius:26px;background:rgba(255,255,255,.16);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;justify-content:space-around;align-items:center;padding:0 10px}
-.dock span{width:42px;height:42px;border-radius:12px;display:grid;place-items:center}
-.dock .i{font-size:20px;color:#fff}
+@keyframes pop{50%{transform:scale(1.07)}}
+.bd{position:absolute;top:-5px;right:-5px;min-width:17px;height:17px;border-radius:9px;background:var(--red);font-size:10px;font-weight:700;display:grid;place-items:center;box-shadow:0 0 0 2px rgba(0,0,0,.25)}
+.dots{position:absolute;left:0;right:0;bottom:92px;display:flex;justify-content:center;gap:6px}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4)}.dots i:first-child{background:#fff}
+.dock{position:absolute;left:12px;right:12px;bottom:18px;height:66px;border-radius:26px;display:flex;justify-content:space-around;align-items:center;padding:0 10px}
+.dock span{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.dock .i{font-size:22px;color:#fff}
+.home{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:104px;height:4px;border-radius:2px;background:rgba(255,255,255,.85);z-index:3}
+
+/* themes: scene + palette */
+body{--bgA:#0a0d12;--bgB:#141a18;--a1:rgba(10,132,255,.45);--a2:rgba(191,90,242,.32);--a3:rgba(48,209,88,.22);--g1:#ffc62b;--g2:#ff7a00;--onG:#1b1400;
+  --wall:radial-gradient(circle at 20% 10%,rgba(10,132,255,.65),transparent 45%),radial-gradient(circle at 80% 90%,rgba(191,90,242,.5),transparent 50%),linear-gradient(160deg,#0a0d12,#1a1220 55%,#05070b)}
+body[data-theme=beach]{--bgA:#2a1420;--bgB:#0d2a3d;--a1:rgba(255,140,60,.5);--a2:rgba(255,80,120,.34);--a3:rgba(30,200,220,.3);--g1:#ffd36a;--g2:#ff6b3d;--onG:#2a1000;
+  --wall:radial-gradient(circle at 70% 46%,#fff3b0 0,#ffb347 7%,transparent 22%),linear-gradient(180deg,#ff9a4d 0,#ff5e7e 40%,#3a3a8c 56%,#0a6a96 57%,#0b3d5c 100%)}
+body[data-theme=showroom]{--bgA:#07080a;--bgB:#16171b;--a1:rgba(255,255,255,.14);--a2:rgba(255,69,58,.32);--a3:rgba(10,132,255,.22);--g1:#ff8a80;--g2:#ff453a;--onG:#fff;
+  --wall:radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.28),transparent 55%),radial-gradient(circle at 80% 90%,rgba(255,69,58,.5),transparent 55%),linear-gradient(160deg,#1c1d22,#08090b)}
+body::before{background:radial-gradient(circle at 15% 8%,var(--a1) 0,transparent 42%),radial-gradient(circle at 88% 30%,var(--a2) 0,transparent 48%),radial-gradient(circle at 50% 95%,var(--a3) 0,transparent 55%),linear-gradient(160deg,var(--bgA),var(--bgB) 60%,#05070b)!important;transition:opacity .6s}
+#scene{position:fixed;inset:0;z-index:-1;pointer-events:none}
+#scene svg{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .9s ease}
+body[data-theme=city] #scene .sc-city,body[data-theme=beach] #scene .sc-beach,body[data-theme=showroom] #scene .sc-showroom{opacity:1}
+#scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,8,10,.55),rgba(5,8,10,.25) 45%,rgba(5,8,10,.5))}
+.themes{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));z-index:30;display:flex;gap:4px;padding:5px;border-radius:999px;
+  background:rgba(15,20,18,.66);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid var(--line);box-shadow:0 14px 40px rgba(0,0,0,.55)}
+.themes button{display:flex;align-items:center;gap:8px;padding:11px 16px;border:0;border-radius:999px;background:transparent;color:var(--mute);font:600 14px var(--b);cursor:pointer;transition:.25s}
+.themes button .i{font-size:18px}.themes button:hover{color:var(--ink)}
+.themes button.on{background:linear-gradient(180deg,var(--g1),var(--g2));color:var(--onG);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+body{padding-bottom:84px}
+@media(max-width:420px){.themes button:not(.on) span{display:none}.themes button{padding:11px 14px}}
 
 /* sections */
 section{padding:56px 0}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g1)}
 h2{font-family:var(--h);font-weight:800;font-stretch:108%;font-size:clamp(28px,4.4vw,44px);letter-spacing:-.01em;margin:8px 0 10px}
 .sub{color:var(--mute);max-width:560px}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:34px}
@@ -169,7 +206,7 @@ footer a:hover{color:var(--ink)}
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;padding-top:44px;text-align:left}
   .phone-wrap{order:-1;margin-bottom:6px}
-  .phone{width:min(230px,60vw)}
+  .phone-wrap{zoom:.8}
   .cards,.steps{grid-template-columns:1fr}
   .grid3{grid-template-columns:1fr 1fr}
   .pill.hide-sm{display:none}
@@ -182,9 +219,11 @@ footer a:hover{color:var(--ink)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
-<body>
+<body data-theme="city">
+<div id="scene" aria-hidden="true"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
   <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></symbol>
   <symbol id="i-android" viewBox="0 0 24 24"><path d="M5 17V9a7 7 0 0114 0v8a2 2 0 01-2 2H7a2 2 0 01-2-2zM8 4L6.5 2M16 4l1.5-2M9.5 10h.01M14.5 10h.01"/></symbol>
   <symbol id="i-win" viewBox="0 0 24 24"><path d="M3 5.5l7-1v7H3zM12 4.3l9-1.3v8.5h-9zM3 13h7v7l-7-1zM12 13h9v8.5l-9-1.3z"/></symbol>
@@ -235,28 +274,43 @@ footer a:hover{color:var(--ink)}
     </div>
 
     <div class="phone-wrap reveal">
-      <div class="phone"><div class="screen">
-        <div class="island"></div>
-        <div class="sbar"><span>9:41</span><span>5G &nbsp;100%</span></div>
-        <div class="time">9:41</div>
-        <div class="date">Friday, Port Harcourt</div>
-        <div class="apps">
-          <div class="app hero-app"><span></span>Everyday</div>
-          <div class="app"><span style="background:linear-gradient(145deg,#4ee27a,#1fa84a)"><svg class="i"><use href="#i-msg"/></svg></span>Chat</div>
-          <div class="app"><span style="background:linear-gradient(145deg,#3fa0ff,#0055b3)"><svg class="i"><use href="#i-bank"/></svg></span>Bank</div>
-          <div class="app"><span style="background:linear-gradient(145deg,#ffd75a,#ff9f0a)"><svg class="i" style="color:#1b1400"><use href="#i-wallet"/></svg></span>Wallet</div>
-          <div class="app"><span style="background:linear-gradient(145deg,#c77dff,#7b2ff7)"><svg class="i"><use href="#i-music"/></svg></span>Music</div>
-          <div class="app"><span style="background:linear-gradient(145deg,#ff6b5e,#d62b1f)"><svg class="i"><use href="#i-cam"/></svg></span>Camera</div>
-          <div class="app"><span style="background:linear-gradient(145deg,#5ee0ff,#0a84ff)"><svg class="i"><use href="#i-map"/></svg></span>Maps</div>
-          <div class="app"><span style="background:linear-gradient(145deg,#8e8e93,#3a3a3c)"><svg class="i"><use href="#i-car"/></svg></span>Rides</div>
+      <div class="phone"><i class="sb l1"></i><i class="sb l2"></i><i class="sb r"></i>
+        <div class="screen">
+          <div class="island"><i></i></div>
+          <div class="sbar"><span id="pClock">9:41</span>
+            <span class="sig">
+              <svg viewBox="0 0 18 11"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="6" rx="1"/><rect x="10" y="2.5" width="3" height="8.5" rx="1"/><rect x="15" y="0" width="3" height="11" rx="1"/></svg>
+              <svg viewBox="0 0 16 11"><path d="M8 10.5a1.3 1.3 0 100-2.6 1.3 1.3 0 000 2.6zM3.6 6.3a6.3 6.3 0 018.8 0l-1.1 1.2a4.7 4.7 0 00-6.6 0zM.8 3.4a10.3 10.3 0 0114.4 0l-1.1 1.2a8.7 8.7 0 00-12.2 0z"/></svg>
+              <svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="22" height="11" rx="3.5" fill="none" stroke="#fff" stroke-opacity=".5"/><rect x="2" y="2" width="19" height="8" rx="2.3"/><rect x="24" y="4" width="2" height="4" rx="1" fill-opacity=".5"/></svg>
+            </span></div>
+          <div class="time" id="pTime">9:41</div>
+          <div class="date" id="pDate">Friday, 13 November</div>
+          <div class="notif glass"><img src="assets/logo-icon.svg" alt=""/><div><b id="nWho">Bank</b><span id="nTxt">Credit alert: +₦250,000</span></div><em>now</em></div>
+          <div class="widgets">
+            <div class="wg glass"><small id="wxPlace">Garden City</small><b id="wxTemp">29°</b><span id="wxCond">Clear night</span></div>
+            <div class="wg glass"><small>Balance</small><b>₦1.25M</b>
+              <svg class="spark" viewBox="0 0 100 20" preserveAspectRatio="none"><polyline points="0,16 14,13 28,15 42,9 56,11 70,5 84,7 100,1" fill="none" stroke="#30d158" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="apps">
+            <div class="app hero-app"><span></span>Everyday</div>
+            <div class="app"><span style="background:linear-gradient(145deg,#4ee27a,#1fa84a)"><svg class="i"><use href="#i-msg"/></svg><b class="bd">3</b></span>Chat</div>
+            <div class="app"><span style="background:linear-gradient(145deg,#3fa0ff,#0055b3)"><svg class="i"><use href="#i-bank"/></svg></span>Bank</div>
+            <div class="app"><span style="background:linear-gradient(145deg,#ffd75a,#ff9f0a)"><svg class="i" style="color:#1b1400"><use href="#i-wallet"/></svg></span>Wallet</div>
+            <div class="app"><span style="background:linear-gradient(145deg,#c77dff,#7b2ff7)"><svg class="i"><use href="#i-music"/></svg></span>Music</div>
+            <div class="app"><span style="background:linear-gradient(145deg,#ff6b5e,#d62b1f)"><svg class="i"><use href="#i-cam"/></svg><b class="bd">1</b></span>Camera</div>
+            <div class="app"><span style="background:linear-gradient(145deg,#5ee0ff,#0a84ff)"><svg class="i"><use href="#i-map"/></svg></span>Maps</div>
+            <div class="app"><span style="background:linear-gradient(145deg,#8e8e93,#3a3a3c)"><svg class="i"><use href="#i-car"/></svg></span>Rides</div>
+          </div>
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="dock glass">
+            <span style="background:linear-gradient(145deg,#4ee27a,#1fa84a)"><svg class="i"><use href="#i-phone"/></svg></span>
+            <span style="background:linear-gradient(145deg,#3fa0ff,#0055b3)"><svg class="i"><use href="#i-msg"/></svg></span>
+            <span style="background:linear-gradient(145deg,#ff6b5e,#d62b1f)"><svg class="i"><use href="#i-heart"/></svg></span>
+            <span style="background:linear-gradient(145deg,#ffd75a,#ff9f0a)"><svg class="i" style="color:#1b1400"><use href="#i-city"/></svg></span>
+          </div>
+          <div class="home"></div><div class="glare"></div>
         </div>
-        <div class="dock">
-          <span style="background:linear-gradient(145deg,#4ee27a,#1fa84a)"><svg class="i"><use href="#i-phone"/></svg></span>
-          <span style="background:linear-gradient(145deg,#3fa0ff,#0055b3)"><svg class="i"><use href="#i-msg"/></svg></span>
-          <span style="background:linear-gradient(145deg,#ff6b5e,#d62b1f)"><svg class="i"><use href="#i-heart"/></svg></span>
-          <span style="background:linear-gradient(145deg,#ffd75a,#ff9f0a)"><svg class="i" style="color:#1b1400"><use href="#i-city"/></svg></span>
-        </div>
-      </div></div>
+      </div>
     </div>
   </header>
 
@@ -367,6 +421,11 @@ footer a:hover{color:var(--ink)}
   </div>
 </footer>
 
+<div class="themes" role="group" aria-label="Choose a scene">
+  <button data-t="city" aria-pressed="true"><svg class="i"><use href="#i-city"/></svg><span>City</span></button>
+  <button data-t="beach"><svg class="i"><use href="#i-sun"/></svg><span>Beach</span></button>
+  <button data-t="showroom"><svg class="i"><use href="#i-car"/></svg><span>Showroom</span></button>
+</div>
 <script>
 (function(){
   var OWNER="clinton10-cyber", REPO="Everyday-game";
@@ -423,6 +482,79 @@ footer a:hover{color:var(--ink)}
     ["apkName","exeName","portName"].forEach(function(id){$(id).textContent="Unavailable"});
     $("andVer").textContent=$("winVer").textContent="Unavailable";
   });
+
+  /* ---- scenes ---- */
+  var seed=7;function rnd(){seed=(seed*9301+49297)%233280;return seed/233280}
+  function city(){
+    var s='<defs><radialGradient id="fl"><stop offset="0" stop-color="#ffb347" stop-opacity=".9"/><stop offset="1" stop-color="#ff6b00" stop-opacity="0"/></radialGradient></defs>';
+    for(var i=0;i<70;i++)s+='<circle cx="'+(rnd()*1440|0)+'" cy="'+(rnd()*360|0)+'" r="'+(rnd()*1.3+.3).toFixed(1)+'" fill="#fff" opacity="'+(rnd()*.6+.2).toFixed(2)+'"/>';
+    s+='<circle cx="1180" cy="150" r="34" fill="#f3f1e8" opacity=".9"/><circle cx="1194" cy="143" r="30" fill="#0d1a33"/>';
+    function layer(n,minH,maxH,fill,lit){
+      var x=-20,o='';
+      for(var i=0;i<n;i++){
+        var w=50+rnd()*70|0,h=minH+rnd()*(maxH-minH)|0,y=800-h;
+        o+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+fill+'"/>';
+        if(lit)for(var cx=x+8;cx<x+w-8;cx+=14)for(var cy=y+12;cy<800-20;cy+=20)if(rnd()<.32)o+='<rect x="'+cx+'" y="'+cy+'" width="6" height="9" fill="'+(rnd()<.8?'#ffd36a':'#8fd1ff')+'" opacity="'+(rnd()*.5+.45).toFixed(2)+'"/>';
+        x+=w+(rnd()*6|0);
+      }
+      return o;
+    }
+    s+=layer(20,160,420,'#16213a',false)+layer(15,90,300,'#0b1220',true);
+    s+='<rect x="1304" y="330" width="5" height="470" fill="#0b1220"/><circle cx="1306" cy="326" r="46" fill="url(#fl)"/><path d="M1306 300c-9 14-9 22 0 30 9-8 9-16 0-30z" fill="#ffb347"/>';
+    return s;
+  }
+  function beach(){
+    var s='<defs><radialGradient id="sg"><stop offset="0" stop-color="#fff6c8"/><stop offset=".25" stop-color="#ffb347"/><stop offset="1" stop-color="#ff6b3d" stop-opacity="0"/></radialGradient><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b6f9c"/><stop offset="1" stop-color="#0a2c46"/></linearGradient></defs>';
+    s+='<circle cx="1210" cy="470" r="260" fill="url(#sg)"/><circle cx="1210" cy="470" r="62" fill="#fff3b0"/>';
+    s+='<rect y="520" width="1440" height="280" fill="url(#sea)"/>';
+    for(var i=0;i<9;i++)s+='<rect x="'+(1210-90+i*8)+'" y="'+(530+i*20)+'" width="'+(180-i*16)+'" height="5" rx="3" fill="#ffd36a" opacity="'+(.7-i*.07).toFixed(2)+'"/>';
+    [[0,610,.18],[0,660,.3],[0,715,.5]].forEach(function(w,k){var y=w[1];s+='<path d="M0 '+y+' Q90 '+(y-22)+' 180 '+y+' T360 '+y+' T540 '+y+' T720 '+y+' T900 '+y+' T1080 '+y+' T1260 '+y+' T1440 '+y+' V800 H0Z" fill="#9be7ff" opacity="'+w[2]*.35+'"/>';});
+    s+='<path d="M0 760 Q360 700 760 740 T1440 720 V800 H0Z" fill="#e9c98a"/><path d="M0 785 Q500 745 1000 775 T1440 765 V800 H0Z" fill="#c99d5c"/>';
+    function palm(x,y,h,sc){
+      var tx=x+h*.28,ty=y-h,o='<path d="M'+x+' '+y+' C'+(x+8)+' '+(y-h*.5)+' '+(x+h*.1)+' '+(y-h*.8)+' '+tx+' '+ty+'" stroke="#1a0f12" stroke-width="'+(11*sc)+'" fill="none" stroke-linecap="round"/>';
+      [[-150,-10],[-110,-60],[-40,-85],[40,-85],[110,-60],[150,-10],[-90,40],[90,40]].forEach(function(d){
+        o+='<path d="M'+tx+' '+ty+' Q'+(tx+d[0]*.5*sc)+' '+(ty+d[1]*sc-30*sc)+' '+(tx+d[0]*sc)+' '+(ty+d[1]*sc+40*sc)+'" stroke="#120a0e" stroke-width="'+(8*sc)+'" fill="none" stroke-linecap="round"/>';});
+      return o;
+    }
+    return s+palm(60,800,330,.85)+palm(1340,790,300,.9);
+  }
+  function showroom(){
+    var s='<defs><linearGradient id="fl2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23252b"/><stop offset="1" stop-color="#07080a"/></linearGradient><linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><linearGradient id="paint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff6b5e"/><stop offset=".55" stop-color="#d62b1f"/><stop offset="1" stop-color="#6e0d08"/></linearGradient></defs>';
+    for(var i=0;i<8;i++)s+='<rect x="'+(60+i*180)+'" y="40" width="6" height="470" fill="#fff" opacity=".07"/>';
+    s+='<rect y="520" width="1440" height="280" fill="url(#fl2)"/><rect y="518" width="1440" height="3" fill="#fff" opacity=".18"/>';
+    for(var j=-9;j<=9;j++)s+='<line x1="720" y1="520" x2="'+(720+j*190)+'" y2="800" stroke="#fff" opacity=".06"/>';
+    [560,610,680,770].forEach(function(y){s+='<line x1="0" y1="'+y+'" x2="1440" y2="'+y+'" stroke="#fff" opacity=".06"/>';});
+    [330,720,1110].forEach(function(x){s+='<polygon points="'+(x-14)+',0 '+(x+14)+',0 '+(x+200)+',650 '+(x-200)+',650" fill="url(#beam)"/><ellipse cx="'+x+'" cy="660" rx="210" ry="26" fill="#fff" opacity=".07"/><rect x="'+(x-22)+'" y="0" width="44" height="12" rx="4" fill="#fff" opacity=".5"/>';});
+    var car='<path d="M420 655 L420 628 C424 604 452 592 520 584 C574 552 640 522 734 520 C826 518 886 540 930 576 C1004 582 1044 598 1052 630 L1052 655Z" fill="url(#paint)"/><path d="M582 580 C626 548 676 534 730 534 L736 580Z M758 580 L752 534 C816 534 862 552 896 580Z" fill="#0b1018" opacity=".9"/><path d="M430 612 H1046" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><rect x="1020" y="606" width="30" height="10" rx="5" fill="#fff6c8"/><rect x="420" y="606" width="18" height="10" rx="5" fill="#ff453a"/><circle cx="540" cy="655" r="40" fill="#050607"/><circle cx="540" cy="655" r="22" fill="#9aa0a6"/><circle cx="930" cy="655" r="40" fill="#050607"/><circle cx="930" cy="655" r="22" fill="#9aa0a6"/>';
+    return s+'<g transform="translate(0,1310) scale(1,-1)" opacity=".14">'+car+'</g><g>'+car+'</g>';
+  }
+  var sc=$("scene");
+  [["city",city],["beach",beach],["showroom",showroom]].forEach(function(t){
+    var n=document.createElementNS("http://www.w3.org/2000/svg","svg");
+    n.setAttribute("viewBox","0 0 1440 800");n.setAttribute("preserveAspectRatio","xMidYMax slice");n.setAttribute("class","sc-"+t[0]);n.innerHTML=t[1]();sc.appendChild(n);
+  });
+
+  /* ---- theme switch ---- */
+  var DATA={
+    city:{p:"Garden City",t:"29\u00b0",c:"Clear night",w:"Bank",n:"Credit alert: +\u20a6250,000"},
+    beach:{p:"Bonny Island",t:"31\u00b0",c:"Sunny and breezy",w:"Beach Club",n:"Your cabana is booked"},
+    showroom:{p:"Showroom",t:"22\u00b0",c:"Air-conditioned",w:"AutoHub",n:"Test drive booked, 4:00 PM"}};
+  function setTheme(t){
+    if(!DATA[t])t="city";
+    document.body.setAttribute("data-theme",t);
+    var d=DATA[t];$("wxPlace").textContent=d.p;$("wxTemp").textContent=d.t;$("wxCond").textContent=d.c;$("nWho").textContent=d.w;$("nTxt").textContent=d.n;
+    document.querySelectorAll(".themes button").forEach(function(b){var on=b.dataset.t===t;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)});
+    try{localStorage.setItem("eph-theme",t)}catch(e){}
+  }
+  document.querySelectorAll(".themes button").forEach(function(b){b.addEventListener("click",function(){setTheme(b.dataset.t)})});
+  var saved="city";try{saved=localStorage.getItem("eph-theme")||"city"}catch(e){}
+  setTheme(saved);
+
+  /* ---- live phone clock ---- */
+  function tick(){var n=new Date(),h=n.getHours()%12||12,m=("0"+n.getMinutes()).slice(-2);
+    $("pTime").textContent=$("pClock").textContent=h+":"+m;
+    $("pDate").textContent=n.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"})}
+  tick();setInterval(tick,20000);
 
   // scroll reveal
   var els=document.querySelectorAll(".reveal");
